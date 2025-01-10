@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from PIL import Image, ImageTk
+from tkinter import colorchooser
 
 window=tk.Tk()
 window.title('To do list')
@@ -23,12 +24,17 @@ def add_task():
         task_label.pack(side=LEFT)
         task.delete(0, tk.END)
 
+def change_color():
+    window.config(bg=colorchooser.askcolor()[1])
+
 intro = tk.Label(window, text='*Add your task here:', font=('helvetica', 10, 'bold'), fg='black')
 intro.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 task = tk.Entry(window, width=35)
 task.grid(row=0, column=1, padx=10, pady=5, sticky="w")
 add = tk.Button(window, text='add',font=('helvetica', 9, 'bold'), fg='#fbfae4', background='#9f85af', command=add_task, width=10, activebackground='#9f85af')
 add.grid(row=0, column=2, padx=10, pady=5, sticky="w")
+change=tk.Button(window,text='BG',font=('helvetica', 9, 'bold'),command=change_color)
+change.grid(row=0,column=3)
 
 window.grid_rowconfigure(1, weight=1)
 window.grid_columnconfigure(0, weight=1)
